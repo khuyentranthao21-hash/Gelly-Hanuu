@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#6c5ce7" />
+  <title>Gelly Hanuu</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <div>
+        <h1>Gelly Hanuu</h1>
+        <p>Catch the glowing jelly drops before they vanish.</p>
+      </div>
+      <div class="stats" aria-label="Game statistics">
+        <div><span>Score</span><strong id="score">0</strong></div>
+        <div><span>Best</span><strong id="best">0</strong></div>
+        <div><span>Energy</span><strong id="energy">10</strong></div>
+        <div><span>Stars</span><strong id="stars">0</strong></div>
+      </div>
+    </header>
+
+    <section class="game-card">
+      <canvas id="gameCanvas" width="900" height="520" aria-label="Gelly Hanuu game area"></canvas>
+      <div id="overlay" class="overlay">
+        <div class="overlay-box">
+          <h2 id="overlayTitle">Ready?</h2>
+          <p id="overlayText">Use the mouse or touch to catch colorful jelly drops.</p>
+          <button id="startButton" type="button">Start Game</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="controls-row">
+      <button id="pauseButton" type="button" disabled>Pause</button>
+      <button id="soundButton" type="button">Sound: On</button>
+      <button id="shopButton" type="button">Open Shop</button>
+    </section>
+
+    <section id="shop" class="shop" hidden>
+      <div class="shop-header">
+        <div>
+          <h2>Consumable Item Shop</h2>
+          <p>Energy and stars are consumed during play and can be purchased again.</p>
+        </div>
+        <button id="closeShopButton" class="secondary" type="button">Close</button>
+      </div>
+
+      <div class="shop-grid">
+        <article class="pack">
+          <span class="pack-tag">Starter Pack</span>
+          <h3>Jelly Boost</h3>
+          <p class="price">$5.00</p>
+          <ul>
+            <li>+50 Energy</li>
+            <li>+100 Stars</li>
+            <li>Consumable purchase</li>
+          </ul>
+          <button type="button" data-product="gelly_hanuu_boost_5">Buy $5 Pack</button>
+        </article>
+
+        <article class="pack featured">
+          <span class="pack-tag">Best Value</span>
+          <h3>Jelly Mega Boost</h3>
+          <p class="price">$10.00</p>
+          <ul>
+            <li>+120 Energy</li>
+            <li>+300 Stars</li>
+            <li>Consumable purchase</li>
+          </ul>
+          <button type="button" data-product="gelly_hanuu_boost_10">Buy $10 Pack</button>
+        </article>
+      </div>
+
+      <p id="purchaseStatus" class="purchase-status" aria-live="polite"></p>
+    </section>
+
+    <footer>
+      <span>English language game • Lightweight HTML5 build</span>
+      <button id="privacyButton" class="link-button" type="button">Privacy</button>
+    </footer>
+  </main>
+
+  <dialog id="privacyDialog">
+    <h2>Privacy Policy</h2>
+    <p>Gelly Hanuu does not collect, store, or share personal information. Game progress is stored locally on your device. Purchases are processed by the platform store.</p>
+    <button id="closePrivacyButton" type="button">Close</button>
+  </dialog>
+
+  <script src="game.js"></script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js").catch(console.error);
+      });
+    }
+  </script>
+</body>
+</html>

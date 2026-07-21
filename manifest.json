@@ -1,0 +1,24 @@
+{
+  "name": "Gelly Hanuu",
+  "short_name": "Gelly Hanuu",
+  "description": "A lightweight jelly-catching arcade game.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#101322",
+  "theme_color": "#6c5ce7",
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
